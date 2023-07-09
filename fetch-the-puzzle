@@ -9,8 +9,11 @@ xhr.onload = function () {
     // Parse the JSON content into an array
     const jsonArray = JSON.parse(content);
 
-    // Set the index to access the desired object in the array
-    const arrayIndex = 1; // Example index value: 1 (for the second object)
+    // Get the value of the scene variable "current_puzzle"
+    const currentPuzzle = runtimeScene.getVariables().get("current_puzzle").getAsString();
+
+    // Find the index of the object with the matching "id" property
+    const arrayIndex = jsonArray.findIndex((obj) => obj.id === parseInt(currentPuzzle));
 
     if (arrayIndex >= 0 && arrayIndex < jsonArray.length) {
       // Access the object at the specified index
