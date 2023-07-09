@@ -1,0 +1,38 @@
+const url = "https://headlines-game.github.io/testing.txt";
+const xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+
+xhr.onload = function () {
+  if (xhr.status === 200) {
+    const content = xhr.responseText;
+
+    // Parse the JSON content into an array
+    const jsonArray = JSON.parse(content);
+
+    // Get the headline from the first value in the array
+    const firstValue = jsonArray[0];
+    const headline = firstValue.headline;
+
+    // Assign the headline to the variable
+    const myHeadline = runtimeScene.getVariables().get("headline");
+    myHeadline.setString(headline);
+
+    // Get the subheading from the second value in the array
+    const secondValue = jsonArray[1];
+    const subheading = secondValue.subheading;
+
+    // Assign the subheading to the variable
+    const mySubheading = runtimeScene.getVariables().get("subheading");
+    mySubheading.setString(subheading);
+
+        // Get the letters from the third value in the array
+        const thirdValue = jsonArray[2];
+        const letters = thirdValue.letters;
+    
+        // Assign the letters to the variable
+        const myLetters = runtimeScene.getVariables().get("letters");
+        myLetters.setString(letters);
+  }
+};
+
+xhr.send();
