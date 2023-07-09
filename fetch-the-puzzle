@@ -25,13 +25,22 @@ xhr.onload = function () {
     const mySubheading = runtimeScene.getVariables().get("subheading");
     mySubheading.setString(subheading);
 
-        // Get the letters from the third value in the array
-        const thirdValue = jsonArray[2];
-        const letters = thirdValue.letters;
-    
-        // Assign the letters to the variable
-        const myLetters = runtimeScene.getVariables().get("letters");
-        myLetters.setString(letters);
+    // Collect all unique letters from the headline
+    const sanitizedString = headline.replace(/\s+/g, "").toUpperCase();
+    // Remove duplicates and sort the characters
+    const uniqueChars = [...new Set(sanitizedString)].sort();
+    // Convert the array of unique characters back to a string
+    const resultingString = uniqueChars.join("");
+    console.log(resultingString); // Output: "ABCEFHLNORSTVXY"
+    const myLetters = runtimeScene.getVariables().get("letters");
+    myLetters.setString(resultingString);
+
+    // Get the hint from the first object in the array
+    const firstHint = jsonArray[0].hint;
+
+    // Assign the hint to the variable
+    const myHint = runtimeScene.getVariables().get("hint");
+    myHint.setString(firstHint);
   }
 };
 
