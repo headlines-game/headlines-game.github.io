@@ -1,9 +1,1 @@
-{
-    "name":"John",
-    "age":31,
-    "pets":[
-        { "animal":"dog", "name":"Fido" },
-        { "animal":"cat", "name":"Felix" },
-        { "animal":"hamster", "name":"Lightning" }
-    ]
-}
+[{"id":1,"subheading":"Pickings Must be Easy if Billy Papke can Annex Ivory Belt","headline":"FRENCH BOXERS ARE NOT VERY CLASSY","letters":"ABCEFHLNORSTVXY","hint":"Unskilled Parisian in martial arts"},{"id":2,"subheading":"Writer Denies Moses Socrates and Hannibal Had Knock-Knees","headline":"SAYS GREAT HEROES WERE BOW LEGGED","letters":"ABDEGHLORSTWY","hint":"Claim that famous figures had condition common in childhood"}]
