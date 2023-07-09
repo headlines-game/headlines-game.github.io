@@ -9,38 +9,38 @@ xhr.onload = function () {
     // Parse the JSON content into an array
     const jsonArray = JSON.parse(content);
 
-    // Get the headline from the first value in the array
-    const firstValue = jsonArray[0];
-    const headline = firstValue.headline;
+    // Set the index to access the desired object in the array
+    const arrayIndex = 1; // Example index value: 1 (for the second object)
 
-    // Assign the headline to the variable
-    const myHeadline = runtimeScene.getVariables().get("headline");
-    myHeadline.setString(headline);
+    if (arrayIndex >= 0 && arrayIndex < jsonArray.length) {
+      // Access the object at the specified index
+      const targetObject = jsonArray[arrayIndex];
 
-    // Get the subheading from the second value in the array
-    const secondValue = jsonArray[1];
-    const subheading = secondValue.subheading;
+      // Extract the desired properties from the target object
+      const headline = targetObject.headline;
+      const subheading = targetObject.subheading;
+      const hint = targetObject.hint;
 
-    // Assign the subheading to the variable
-    const mySubheading = runtimeScene.getVariables().get("subheading");
-    mySubheading.setString(subheading);
+      // Assign the values to the corresponding GDevelop variables
+      const myHeadline = runtimeScene.getVariables().get("headline");
+      myHeadline.setString(headline);
 
-    // Collect all unique letters from the headline
-    const sanitizedString = headline.replace(/\s+/g, "").toUpperCase();
-    // Remove duplicates and sort the characters
-    const uniqueChars = [...new Set(sanitizedString)].sort();
-    // Convert the array of unique characters back to a string
-    const resultingString = uniqueChars.join("");
-    console.log(resultingString); // Output: "ABCEFHLNORSTVXY"
-    const myLetters = runtimeScene.getVariables().get("letters");
-    myLetters.setString(resultingString);
+      const mySubheading = runtimeScene.getVariables().get("subheading");
+      mySubheading.setString(subheading);
 
-    // Get the hint from the first object in the array
-    const firstHint = jsonArray[0].hint;
+      const myHint = runtimeScene.getVariables().get("hint");
+      myHint.setString(hint);
 
-    // Assign the hint to the variable
-    const myHint = runtimeScene.getVariables().get("hint");
-    myHint.setString(firstHint);
+      // Collect all unique letters from the headline
+      const sanitizedString = headline.replace(/\s+/g, "").toUpperCase();
+      // Remove duplicates and sort the characters
+      const uniqueChars = [...new Set(sanitizedString)].sort();
+      // Convert the array of unique characters back to a string
+      const resultingString = uniqueChars.join("");
+      console.log(resultingString); // Output: "ABCEFHLNORSTVXY"
+      const myLetters = runtimeScene.getVariables().get("letters");
+      myLetters.setString(resultingString);
+    }
   }
 };
 
