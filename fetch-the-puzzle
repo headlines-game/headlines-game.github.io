@@ -13,6 +13,7 @@ if (currentPuzzleIndex >= 0 && currentPuzzleIndex < jsonArray.length) {
   const headline = currentPuzzle.headline;
   const subheading = currentPuzzle.subheading;
   const blurb = currentPuzzle.blurb;
+  const hint = currentPuzzle.hint;
 
   // Assign the values to the corresponding GDevelop variables
   const myHeadline = runtimeScene.getVariables().get("headline");
@@ -23,6 +24,9 @@ if (currentPuzzleIndex >= 0 && currentPuzzleIndex < jsonArray.length) {
 
   const myBlurb = runtimeScene.getVariables().get("blurb");
   myBlurb.setString(blurb);
+
+  const myHint = runtimeScene.getVariables().get("hint");
+  myBlurb.setString(hint);
 
   // Collect all unique letters from the headline
   const sanitizedString = headline.replace(/\s+/g, "").toUpperCase();
